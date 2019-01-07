@@ -20,12 +20,12 @@ This course covers Web Development, focusing on the architectural implications o
 - Additional software (without cost) is required.  Installation and configuration is your responsibility (Mac, Windows, or \*nix)
 - A great deal of work will be done online, in and out of class
 
-- A more detailed listing of requirements and expectations will be shared in the class github repository 
+A more detailed listing of requirements and expectations will be shared in the class github repository 
 
 ## Expected Class Schedule (subject to change):
 
 ### Section 1: Web Fundamentals
-Mon Jan 7, Mon Jan 14, NOT ~Mon Jan 21~ (holiday), Mon Jan 28
+Mon Jan 7, Mon Jan 14, NOT ~~Mon Jan 21~~ (holiday), Mon Jan 28
    - Protocols, Web, HTTP, servers/webservers, browsers, clients, URL/URI, HTTP as stateless, request/response, headers/body
    - The role of HTML, CSS, and JS
    - the DOM, semantic HTML, MDN, the Browser Wars, evergreen browsers, the unreliability of not-that-old information
@@ -45,7 +45,7 @@ Mon Jan 7, Mon Jan 14, NOT ~Mon Jan 21~ (holiday), Mon Jan 28
 At the end of Section 1 you should be able to write a simple multiple page web application using NodeJS that serves semantic HTML and styles with CSS
 
 ### Section 2: The Recent Web
-Mon Feb 4, NOT ~Mon Feb 11~ (instructor conflict), NOT ~Mon Feb 18~ (holiday), Mon Feb 25, NOT ~Mon Mar 4~ (holiday), Mon Mar 11, Mon Mar 18
+Mon Feb 4, NOT ~~Mon Feb 11~~ (instructor conflict), NOT ~~Mon Feb 18~~ (holiday), Mon Feb 25, NOT ~~Mon Mar 4~~ (holiday), Mon Mar 11, Mon Mar 18
    - HTTPS/SSL, public-key encryption, certificates, Authentication, Authorization
    - asynchronous events (async), Promises, XHR/fetch/AJAX, HTTP verbs (methods), REST, GraphQL, services/endpoints
    - polyfills, minifiers, linters, bundlers, transpilers, CSS preprocessors, builds
@@ -56,7 +56,7 @@ Mon Feb 4, NOT ~Mon Feb 11~ (instructor conflict), NOT ~Mon Feb 18~ (holiday), M
 At the end of Section 2 you should be able to write a simple single page web application (SPA) calling RESTful, external services, and use NodeJS to provide service endpoints that can make use of a database.
 
 ### Section 3: The Modern Web Industry
-Mon Mar 25, Mon Apr 1, Mon Apr 8, NOT ~Mon Apr 15~ (holiday)
+Mon Mar 25, Mon Apr 1, Mon Apr 8, NOT ~~Mon Apr 15~~ (holiday)
  - Application state management, Redux
  - Progressive Web Apps (PWA)
  - as-a-service (PaaS, FaaS)
@@ -67,6 +67,6 @@ Mon Mar 25, Mon Apr 1, Mon Apr 8, NOT ~Mon Apr 15~ (holiday)
  - Isomorphic/Universal Javascript 
  - JS on other platforms, websockets
 
-At the end of Section 3 you should be able to analyze provided designs to matching write a complex single page web application (SPA) and prior to actual codeing identify potential problems with development due to insufficient/poor requirements.
+At the end of Section 3 you should be able to analyze provided designs to matching write a complex single page web application (SPA) and prior to actual coding identify potential problems with development due to insufficient/poor requirements.
 
 ### Final Projects Due Mon Apr 24, 11:59pm (No class)

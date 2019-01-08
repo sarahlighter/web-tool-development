@@ -3,7 +3,7 @@ const path = require('path');
 const people = `
 Name           |  NEUID   | github ID
 Brett Ritter   | ???      | swiftone
-
+Xinrui Wang    |001444355 | sarahlighter
 `.split('\n').filter( truthy => truthy );
 
 if (require.main === module) {
@@ -11,7 +11,7 @@ if (require.main === module) {
 
   // Confirm the PATH setup
 
-  const pathOk = process.env.PATH.includes( path.dirname('./node_modules/.bin') );
+  const pathOk = process.env.PATH.includes( path.dirname('.\node_modules\.bin') );
   console.log(`PATH is ${ pathOk ? 'looking good' : 'NOT OKAY!!1!eleven!' }\n`);
 
   if( pathOk ) {

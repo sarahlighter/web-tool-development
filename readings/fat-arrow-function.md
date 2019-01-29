@@ -57,7 +57,7 @@ This means these functions all return `3`:
 * `() => 3;`
 * `() => 1 + 2;`
 * `() => [3][0];`
-* `() => true ? 4 : 1 + 2;`
+* `() => false ? 4 : 1 + 2;`
 
 A return value does not have to be a primative value - it can be an array or an object.  This means there would be a potential confusion in the case of:
 * `() => {}`

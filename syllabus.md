@@ -28,25 +28,23 @@ A more detailed listing of requirements and expectations will be shared in the c
 Mon Jan 7, Mon Jan 14, NOT ~~Mon Jan 21~~ (holiday), Mon Jan 28
    - Protocols, Web, HTTP, servers/webservers, browsers, clients, URL/URI, HTTP as stateless, request/response, headers/body
    - The role of HTML, CSS, and JS
-   - the DOM, semantic HTML, MDN, the Browser Wars, evergreen browsers, the unreliability of not-that-old information
+   - semantic HTML, MDN, the Browser Wars, evergreen browsers, the unreliability of not-that-old information
    - HTML best practices, CSS best practices
    - absolute vs relative paths/URLs
-   - multiple-page web applications
+   - application state, multiple-page web applications
    - static vs dynamic assets, client-side/server-side
-   - cookies, localStorage
    - programming languages as communication, idioms, static/dynamic languages, weak/strong typing
    - Javascript syntax, NodeJS, npm/yarn, package.json, global vs local installs, JSON
-   - debugging JS, unit tests, testing pyramid, TDD
    - functions as objects, prototypes, 'this'(context), callbacks, threads, try/catch, closures, scopes
-   - Object Oriented Programming, Procedural programming, Functional Programming
-   - templates, Model-View-Controller(MVC)
-   - application state, state in model vs state in DOM
 
 At the end of Section 1 you should be able to write a simple multiple page web application using NodeJS that serves semantic HTML and styles with CSS
 
 ### Section 2: The Recent Web
 Mon Feb 4, NOT ~~Mon Feb 11~~ (instructor conflict), NOT ~~Mon Feb 18~~ (holiday), Mon Feb 25, NOT ~~Mon Mar 4~~ (holiday), Mon Mar 11, Mon Mar 18
    - HTTPS/SSL, public-key encryption, certificates, Authentication, Authorization
+   - Model-View-Controller(MVC)
+   - debugging JS, unit tests, testing pyramid, TDD
+   - the DOM, state in model vs state in DOM, cookies, localStorage
    - asynchronous events (async), Promises, XHR/fetch/AJAX, HTTP verbs (methods), REST, GraphQL, services/endpoints
    - polyfills, minifiers, linters, bundlers, transpilers, CSS preprocessors, builds
    - Frontend frameworks/libraries, React, virtual DOM, JSX, Single Page Applications (SPA)

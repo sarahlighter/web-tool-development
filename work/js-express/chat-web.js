@@ -1,4 +1,6 @@
+
 const chatWeb = {
+
   chatPage: function(chat) {
     return `
       <!DOCTYPE html>
@@ -13,7 +15,11 @@ const chatWeb = {
               ${chatWeb.getUserList(chat)}
               ${chatWeb.getMessageList(chat)}
             </div>
-            ${chatWeb.getOutgoing(chat)}
+    			<div class="send-panel">
+            ${chatWeb.refresh(chat)}
+    				${chatWeb.getOutgoing(chat)}
+            ${chatWeb.getLogOutStatus(chat)}
+    			</div>
           </div>
         </body>
       </html>
@@ -27,7 +33,7 @@ const chatWeb = {
           <div class="message">
             <div class="meta-info">
               <div class="sender-info">
-                <span class="username">${message.sender}</span>
+                <span class="username" type="hidden">${message.sender}</span>
               </div>
               <div class="message-info">
                 <span class="timestamp">${message.timestamp}</span>
@@ -39,6 +45,7 @@ const chatWeb = {
       `).join('') +
       `</ol>`;
   },
+  
   getUserList: function(chat) {
     return `<ul class="users">` +
     Object.values(chat.users).map( user => `
@@ -50,15 +57,38 @@ const chatWeb = {
     `).join('') +
     `</ul>`;
   },
-  getOutgoing: function() {
+  
+  
+  getLogOutStatus: function(chat){
+	  return `
+	  <div class="logOut">
+    <form action="/logout" method="POST">
+          <input  name="currUserName" type="hidden" value= ${chat.currUser} />
+          <button type="submit">Log out</button>     
+    </form> 
+	  </div>
+	  `;
+  },
+  
+  getOutgoing: function(chat) {
     return `
       <div class="outgoing">
         <form action="/chat" method="POST">
+          <input  name="currUserName" type="hidden" value= ${chat.currUser} />
           <input class="to-send" name="text" value="" placeholder="Enter message to send"/>
-          <button type="submit">Send</button>
+          <button type="submit">Send</button>		  
         </form>
       </div>
     `;
+  },
+  
+  refresh: function(chat){
+	  return `
+      <div class="refresh">
+		    <a href="/?username=${chat.currUser}" >refresh</a>
+	    </div>
+    `;
   }
+
 };
 module.exports = chatWeb;

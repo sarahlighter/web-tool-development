@@ -1,52 +1,104 @@
-#chat-app { 
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
+.display-panel{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	height:400px;
 }
 
-.display-panel { 
-  display: flex;
-  flex-direction: row;
+.users{
+	background-color: LightBlue;
+	justify-content: center;
+	list-style: none;
+	outline: thick double #4682B4;
+	overflow: auto;
+	width: 100px;
+	display: block;
 }
 
-.users { 
-  border: 1px solid black;
-  list-style: none;
-  padding: 5px;
-  margin: 0;
+.users span:hover {
+    background-color: #555;
+    color: white;
 }
 
-.messages { 
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.messages {
+	justify-content: center;
+	list-style: none;
+	background-color: MintCream;
+	outline: thick double #4682B4;
+	overflow: auto;
+	width: 600px;
 }
 
-.message { 
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
+.message{
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column; 
+	margin: 10px;
 }
 
-.message:hover { 
-  background-color: #BADA55;
+.meta-info {
+	display: flex;
+	flex-direction: row;
+	color: gray;
 }
 
-.meta-info { 
-  min-width: 100px;
-  background-color: lightgrey;
-  padding: 5px;
+.sender-info{
+	display: flex;
+	flex-direction: column-reverse;
 }
 
-.message-text { 
-  padding-left: 10px;
+.sender-info img{
+	width: 50px;
+	height: 50px;
 }
 
-.sender-info { 
+.message-info{
+	display: flex;
+	flex-direction: row-reverse; 
+	margin-left: 10px;
 }
 
-.message-info { 
+.message-text{
+	position: relative;
+	background: #dddddd;
+	line-height: 30px;
+	box-shadow: 1px 2px 3px #E9FBE4;
+	border-radius: 4px;
+	
+}
+.message-text:before{
+	content: '';
+	position: absolute;
+	right: 100%;
+	top: 4px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent;
+	border-right-width: 16px;
+	border-right-color: currentColor;
+	color: #dddddd;
 }
 
-.outgoing { 
+.outgoing {
+	display: flex;
+	flex-direction: row-reverse;  
+	align-items: center;
+	margin: 10px;
+}
+
+.to-send{
+	width: 400px;
+	height: 40px;
+}
+
+.send-panel{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.refresh{
+	background-color: PowderBlue;
+	margin-left: 10px;
 }

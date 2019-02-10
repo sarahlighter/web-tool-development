@@ -1,0 +1,142 @@
+body {
+  background: rgb(50,50,50);
+}
+
+.wordsGuess-app{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.display-panel{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.allwords{
+	display: inline;
+	list-style: none;
+	background-color: Grey;
+	overflow: auto;
+	width: 450px;
+	height: 40px;
+}
+
+.allwords li{
+	display: inline-flex;
+}
+
+.word{
+	color: white;
+	margin: 8px;
+}
+
+.outgoing {
+  margin: 20px auto 0;
+}
+
+.validWordList-container{
+	display: flex;
+    flex-direction:row;
+	justify-content:center;
+	align-items:center;
+}
+
+.validWordList-title{
+	color: white;
+	font-size: 20px;
+	margin-right:10px;
+}
+
+.guess_results { 
+    display: flex;
+    flex-direction: column-reverse;
+    list-style: none;
+	color: DarkGray;
+	width: 600px;
+}
+
+.guess-button {
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: DodgerBlue;
+    color: white;
+    transition: .2s;
+    margin: 10px 0;
+    text-shadow: 1px 2px 0 MediumBlue;
+	font-family:  Gill Sans Extrabold, sans-serif;
+	
+}
+
+.guess-button:hover {
+    background: MediumBlue;
+}
+
+.restart-button {
+	border: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: DodgerBlue;
+    color: white;
+    transition: .2s;
+    margin: 10px 0;
+    margin-left: 20px;
+    text-shadow: 1px 2px 0 MediumBlue;
+	font-family:  Gill Sans Extrabold, sans-serif;
+}
+
+.restart-button:hover {
+    background: MediumBlue;
+}
+
+.to-send{
+	outline: none;
+    padding: 10px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+    border: 1px solid #aaa;
+    color: gray;
+	font-family: Gill Sans Extrabold, sans-serif;
+}
+
+strong{
+	color: red;
+}
+
+.callout-header{
+	font-size: 40px;
+	color: white;
+	display: flex;
+    flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.callout{
+	background-color: SlateBlue; 
+}
+
+.callout p{
+	font-size: 20px;
+	color: LightBlue;
+}
+
+.closebtn{
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 50px;
+}
+
+.callout-container{
+	display: flex;
+    flex-direction:row;
+	justify-content:center;
+	align-items:center;
+}
+

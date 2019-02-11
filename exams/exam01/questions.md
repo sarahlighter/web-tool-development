@@ -30,7 +30,7 @@ Server-side JS runs in a server. The server-side java scripts are deployed only 
 ## Q: What are the differences between `var`, `const`, and `let`, and when should you use each of them?
 
 
-*Differences:
+Differences:
 
 1. Var can change values and a var can be reassigned.  Const is read-only, cannot be redeclared or reassigned, but it is mutable when the const is an object or array.
     Let can be reassigned, but cannot be redeclared.

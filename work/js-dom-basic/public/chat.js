@@ -26,23 +26,11 @@
 const unselectButton = document.getElementById('unselect-button');
 
 
-const status={}; 
-
-(function getStatus(){
-  if(!status.selectedUsers){
-    status.selectedUsers = {};
-    getSelectedUsers();
-  }
-  initSelectedUsers();
-  selectButtonStatus();
-})();
-
 ( function selectUser(){
   const allUsers = document.querySelector(".users");
   allUsers.addEventListener('click', (e) =>{
     if(e.target.classList.contains('username')){
       const selectedUser =e.target.textContent;
-      updateStatus(selectedUser);
       userMatchMessages(selectedUser);
       selectButtonStatus();
     }
@@ -72,22 +60,8 @@ unselectButton.addEventListener("click", function(){
   }
   selectButtonStatus();
   removeAllHiddenReminder();
-  window.name="";
 });
 
-const logout = { logoutbutton: {}};
-(function getLogOutbutton(){
-  const allsubmitbutton= document.querySelectorAll('button');
-  for(let button of allsubmitbutton){
-     if(button.textContent === "Logout"){
-      logout.logoutbutton = button;
-    }
-  }
-})();
-
-logout.logoutbutton.addEventListener("click",function(){
-  window.name=""; 
-});
 
 
 function selectButtonStatus(){
@@ -96,7 +70,6 @@ function selectButtonStatus(){
     unselectButton.style.display = "inline-flex";
   }else{
     unselectButton.style.display = "none";
-    status.selectedUsers = {};
     showAllMessages();
     removeAllHiddenReminder();
   }
@@ -161,30 +134,3 @@ function showAllMessages(){
   }
 }
 
-function initSelectedUsers(){
-  const keys = Object.keys(status.selectedUsers);
-  for(let username of keys){
-    userMatchMessages(username);
-  }
-}
-
-function updateStatus( selectedUser ) {
-  if(status.selectedUsers[selectedUser]){
-    delete status.selectedUsers[selectedUser];
-  }else{
-      status.selectedUsers[selectedUser] = selectedUser;
-  }
-  const keys = Object.keys(status.selectedUsers);
-  const allselected={ users:""}
-  for(let username of keys){
-    allselected.users+=username+";";
-  }
-  window.name=allselected.users;
-}
-
-function getSelectedUsers(){
-  const allusers=window.name.split(";");
-  for (let user of allusers) {
-    status.selectedUsers[user] = user;
-  }
-}

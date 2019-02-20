@@ -6,11 +6,11 @@
 * add, commit, and push the branch to github
 * Create a PR to merge to master
 * Be sure to include the TA and I as reviewers.  
-* Due by 11:59pm Sun Feb 17
+* Due by 11:59pm Sun Feb 24
 
 ## Goal and Requirements
 
-The goal is to add some front-end JS-based convenience to the chat application
+The goal is to add some front-end JS-based convenience to the chat application.  You are to demonstrate your understanding of reading and manipulating the DOM after a page is loaded.
 
 * The "login" button will be disabled if there is no username provided
 * Clicking on a username in the user list will do the below (or undo them if this username is already selected)
@@ -25,7 +25,7 @@ The goal is to add some front-end JS-based convenience to the chat application
    * show only messages from selected usernames when at least one username is selected
    * show an indicator when messages are not visible at the space where 1 or more messages would be
       * This indicators should be thin - big enough to be visible, small enough to be smaller than an actual message.
-      * The indiciator can be an icon or text - your choice     
+      * The indiciator can be an icon or text - your choice
       * You must not show multiple indicators next to each other.  
           * If there are 3 "hidden" messages between 2 visible messages, there will be only 1 indicator (message, indicator, message)
           * If there are 3 visible messages and 2 hidden messages that alternate, each hidden message is indicated (message, indicator, message, indicator)
@@ -42,8 +42,7 @@ The goal is to add some front-end JS-based convenience to the chat application
 ### Functionality
 * I should be able to select/unselect usernames to filter the messages
 * Selecting a username with no messages should not cause any errors
-* If I send a message or refresh, the selected usernames should stay selected and the hidden messages should stay hidden
-  * "stay" here can mean that they are automatically re-selected and re-hidden, since the server-side is not changing.
+* If I send a message or refresh, the page will reset and usernames will not remain selected and hidden messages will become unhidden
 
 ### Code
 * Your CSS should not use names to describe the appearance
@@ -65,9 +64,9 @@ The goal is to add some front-end JS-based convenience to the chat application
 ## Restrictions
 * Do not use external JS (Exception: Nodemon and Browserify are permitted but not required)
    * Either of Nodemon and browserify can be listed as a devDependency, but not as a normal dependency.
-* Do NOT modify server-side JS
+* Do NOT modify server-side JS, not even the HTML-generation part
 * Do not use external CSS libraries (except for icon libraries if desired - no JS!)
-* Do not make additional server calls - the added code should not interact with fetch() or XHR
+* Do not make additional server calls - the added code should not interact with fetch(), XHR, or other AJAX methods
 * You may not use floats to do more than manage flowing text with images
 * You may not use HTML tables or CSS table layouts
 * Do not have any files in your PR except for the assignment (no files from other assignments, for example)
@@ -76,10 +75,7 @@ The goal is to add some front-end JS-based convenience to the chat application
 * Do not use terrible variable names
 * Do not have console.log debugging messages or commented out code
 * Do not use cookies
-* Do not use localStorage
+* Do not use localStorage, sessionStorage, IndexedDB or other client-side storage
 * You may not use CSS preprocessors, minifiers, or other tools to modify your CSS
   * I and the TA must be able to read it easily
-
-
-
 

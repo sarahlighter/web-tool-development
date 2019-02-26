@@ -1,4 +1,4 @@
-( function IIFE() {
+( function loginCheck() {
   const sendButton = document.querySelector(".send button");
   const toSend = document.querySelector(".to-send");
   if(toSend && sendButton) {
@@ -133,4 +133,3 @@ function showAllMessages(){
     m.style.display = "inline-flex";
   }
 }
-

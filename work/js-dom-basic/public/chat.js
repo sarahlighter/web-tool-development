@@ -1,4 +1,5 @@
-( function loginCheck() {
+
+( function sendCheck() {
   const sendButton = document.querySelector(".send button");
   const toSend = document.querySelector(".to-send");
   if(toSend && sendButton) {
@@ -11,6 +12,22 @@
       }
     });
   }
+})();
+
+(function loginCheck(){
+	const login = document.querySelector(".login").children[0];
+	const username = login.children[0];
+	const loginButton = login.children[1];
+	if(username && loginButton){
+		loginButton.disabled = !username.value;
+		username.addEventListener('input',(e) =>{
+			if(e.target.value) {
+				loginButton.disabled = false;
+			}else{
+				loginButton.disabled = true;
+			}
+		});
+	}
 })();
 
 ( function createUnselectButton(){

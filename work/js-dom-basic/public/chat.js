@@ -15,6 +15,7 @@
 })();
 
 (function loginCheck(){
+  if(document.querySelector(".login")){
 	const login = document.querySelector(".login").children[0];
 	const username = login.children[0];
 	const loginButton = login.children[1];
@@ -28,6 +29,7 @@
 			}
 		});
 	}
+  }
 })();
 
 ( function createUnselectButton(){

@@ -4,6 +4,7 @@
 		fetch('/messages/')
 		.then( response =>{
 			if( response.ok ) {
+				resetErrorStatus();
 				return response.json();
 			}else{
 				throw new Error("Couldn't get data!");
@@ -12,7 +13,8 @@
 		.then( response =>{
 			updateMessages( response.messages );
 			updateUsers( response.users );
-		});
+		})
+		.catch(err => showErrorStatus(err));
 	};
 
 	const updateMessages = ( messages ) =>{
@@ -91,10 +93,6 @@
 
 	};
 
-	// document.querySelector(".send button").addEventListener('click', () => {
-
-	// }
-
 	const sendMessage = () =>{
 		const sendButton = document.querySelector(".send button");
 		if(!sendButton) return;
@@ -125,13 +123,16 @@
 	};
 
 	const disableSendFormPost = () =>{
-		//prevent send form from posting to /chat
+		//it seems like send form navigate everytime when I click the button, it kind of reload the page, so I decide to change form into div
+		//drawback of div: cannot press enter key
 		const sendForm = document.querySelector(".send");
 		if(!sendForm) return;
-		sendForm.removeAttribute("action");
-		sendForm.removeAttribute("method");
-		const sendButton = document.querySelector(".send button");
-		sendButton.removeAttribute("type");
+		const insider = sendForm.innerHTML;
+		const sendDiv = document.createElement("div");
+		sendDiv.className = 'send';
+		sendDiv.innerHTML = insider;
+		sendForm.parentElement.appendChild(sendDiv);
+		sendForm.parentElement.removeChild(sendForm);
 	};
 
 	const showErrorStatus = ( ResponseStatus ) =>{
@@ -145,10 +146,10 @@
 	setInterval(()=>{
 		updateMessagesAndUsers();
 	},5000);
+	removeRefreshButton();
+	disableSendFormPost();
 	sendCheck();
 	loginCheck();
-	removeRefreshButton();
-	//sendMessage();
-	disableSendFormPost();
+	sendMessage();
 })();
 

@@ -1,3 +1,4 @@
+"use strict";
 ( function IIFE(){
 	sendCheck();
 	loginCheck();

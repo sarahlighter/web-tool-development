@@ -124,16 +124,9 @@
 	};
 
 	const disableSendFormPost = () =>{
-		//it seems like send form navigate everytime when I click the button, it kind of reload the page, so I decide to change form into div
-		//drawback of div: cannot press enter key
 		const sendForm = document.querySelector(".send");
 		if(!sendForm) return;
-		const insider = sendForm.innerHTML;
-		const sendDiv = document.createElement("div");
-		sendDiv.className = 'send';
-		sendDiv.innerHTML = insider;
-		sendForm.parentElement.appendChild(sendDiv);
-		sendForm.parentElement.removeChild(sendForm);
+		sendForm.setAttribute("onsubmit","event.preventDefault()");
 	};
 
 	const showErrorStatus = ( ResponseStatus ) =>{

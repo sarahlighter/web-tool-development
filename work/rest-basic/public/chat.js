@@ -15,7 +15,7 @@
 			updateMessages( response.messages );
 			updateUsers( response.users );
 		})
-		.catch(err => showErrorStatus(err));
+		.catch(err =>showErrorStatus(err)); 
 	};
 
 	const updateMessages = ( messages ) =>{
@@ -27,7 +27,7 @@
 		                <span class="username" type="hidden">${message.sender}</span>
 		            </div>
 			        <div class="message-info">
-			        	<span class="timestamp">${message.timestamp}</span>
+			        	<span class="timestamp">${new Date(message.timestamp)}</span>
 			    	</div>
 		    	</div>
 		    	<p class="message-text">${message.text}</p>
@@ -115,7 +115,12 @@
 						updateMessagesAndUsers();
 						resetErrorStatus();
 					} else {
-						throw new Error("Your post fetch is failed");
+						return response.json();
+					}
+				})
+				.then( errorMessage =>{
+					if(errorMessage){
+						throw new Error(errorMessage.error);
 					}
 				})
 				.catch( err => showErrorStatus(err));

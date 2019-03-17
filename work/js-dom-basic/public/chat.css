@@ -1,15 +1,24 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #chat-app { 
   border: 1px solid black;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  max-height: 95vh;
+  max-height: 90vh;
+  max-width: 90vh;
+  min-width: 900px;
+  background: linear-gradient(to bottom, DodgerBlue, MintCream);
 }
 
 .display-panel { 
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid black;
+  justify-content: center;
 }
 
 .users { 
@@ -17,11 +26,19 @@
   list-style: none;
   padding: 5px;
   margin: 0;
-  min-width: 100px;
+  min-width: 160px;
   overflow-y: scroll;
+  color: white;
+  text-shadow: 1px 2px 0 DimGrey;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+.users span:hover {
+    background-color: #555;
+    color: white;
 }
 
 .messages { 
+  border: 1px solid black;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -30,7 +47,7 @@
 }
 
 .messages li {
-  border-bottom: 1px solid black;
+  margin: 10px;
 }
 
 .messages li:last-child { 
@@ -47,17 +64,36 @@
 }
 
 .meta-info { 
-  min-width: 100px;
+  width: 300px;
   background-color: lightgrey;
   padding: 5px;
+  margin-right: 20px;
 }
 
 .message-text { 
-  padding-left: 10px;
   width: 100%;
+  position: relative;
+  background: #dddddd;
+  line-height: 30px;
+  box-shadow: 1px 2px 3px DimGrey;
+  border-radius: 4px;
+  content: 10px;
 }
 
+.message-text:before{
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 4px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent;
+  border-right-width: 16px;
+  border-right-color: currentColor;
+  color: #dddddd;
+}
 .sender-info { 
+
 }
 
 .message-info { 
@@ -66,7 +102,10 @@
 .outgoing { 
   padding: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  margin-left: 60px;
 }
 
 .logout { 
@@ -77,6 +116,7 @@
 
 .outgoing .send { 
   flex: 1 1 auto;
+  margin-left: 50px;
 }
 
 .outgoing .refresh { 
@@ -87,3 +127,38 @@
   width: 80%;
 }
 
+.users{
+  margin-left: 20px;
+}
+
+.users .selected{
+  filter: invert(100%);
+}
+
+.messages .selected{
+}
+
+.hidden-reminder{
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  color: DimGray;
+}
+
+button{
+  border: none;
+  font-size: 15px;
+  padding: 2px 5px;
+  cursor: pointer;
+  background: Gray;
+  color: white;    
+  transition: .2s;
+  margin: 10px 0;
+  text-shadow: 1px 2px 0 MediumBlue;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+}

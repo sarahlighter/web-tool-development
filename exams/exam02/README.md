@@ -53,6 +53,9 @@ The multiple-page version will submit data via links and forms.  The single-page
 * You will need to add REST services to fulfill the needs of the application
 * Pick services data, methods, URLs, and status codes to match the requirements of RESTful services as described in class
 
+### Persistence
+* There is no particular persistence requirement: No DB, no JSONStore calls - the data need only persist as long as the server is running
+
 ## Allowances
 * You may create your HTML as you see fit, but it must be fundamentally semantically valid and other best practices from class
 * You may create the CSS as you see fit but you must follow the best practices given in class
@@ -63,6 +66,7 @@ The multiple-page version will submit data via links and forms.  The single-page
 ## Restrictions
 * You must provide meaningful, and where applicable, ACTIONABLE error messages for your user on the page (for service calls)
 * You should use no external libraries of any kind save for those explicitly allowed
+* Including no React
 * Your JS, HTML, and CSS files must uphold the best practices from class
 * You may not use floats to do more than manage flowing text with images
 * You may not use HTML tables or CSS table layouts

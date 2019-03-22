@@ -18,9 +18,15 @@
 		recipeDiv.innerHTML =`
 		<div class="outgoing">
 			<form class="send">
-				<input class="to-send-title" value="" placeholder="Enter ricipe title"/>
-				<textarea class="to-send-ingredients" value="" placeholder="Enter ingredients"/></textarea>
-				<textarea class="to-send-instructions" value="" placeholder="Enter instructions"/></textarea>
+				<span>title:
+					<input class="to-send-title" value="" placeholder="Enter ricipe title"/>
+				</span>
+				<span>ingredients:
+					<textarea class="to-send-ingredients" value="" placeholder="Enter ingredients"/></textarea>
+				</span>
+				<span>instructions:
+					<textarea class="to-send-instructions" value="" placeholder="Enter instructions"/></textarea>
+				</span>
 				<button type="submit">Send</button>
 			</form>
 		</div>

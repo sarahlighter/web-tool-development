@@ -26,6 +26,7 @@ console.log(`from then: ${value1}`);
 ````
 from then: [object Promise] 
 callback: hi 
+```
 
 ## Q: What is a rule of thumb you can follow to understand when async code can and cannot modify your variables and/or call your methods?
 

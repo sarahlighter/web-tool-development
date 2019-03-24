@@ -23,7 +23,7 @@ const value1 = promise.then(
 ); 
 console.log(`from then: ${value1}`); 
 ```
-````
+```
 from then: [object Promise] 
 callback: hi 
 ```

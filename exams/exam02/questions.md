@@ -9,13 +9,13 @@
 
 In deciding what resources are within your system, name them as nouns as opposed to verbs or actions. In other words, a RESTful URL should refer to a resource that is a thing instead of referring to an action. Nouns have properties as verbs do not, just another distinguishing factor.
 
-Not represent a resourceExample: ` /deleteAllRedCars`
-Modify:  `/cars`
+Not represent a resourceExample: ` www.example.com/cardealer/deleteAllRedCars`
+Modify:  ` www.example.com/cardealer/Cars`
 
 
 ## Q: I say that "Once you go async, you have to stay async".  What does this mean?  Give an example that demonstrates.
 
-It means to use a value from async,  must stay async, you cannot get async from middle of code execution.
+It means to use a value from async,  must stay async. As the following example, the `console.log(`callback: ${text}`)` is pushed onto the call stack and executed before exiting the program,  you cannot get async from middle of code execution. 
 ```
 const promise = Promise.resolve("hi"); 
 const value1 = promise.then(    
@@ -30,26 +30,35 @@ callback: hi
 
 ## Q: What is a rule of thumb you can follow to understand when async code can and cannot modify your variables and/or call your methods?
 
-That triggering is asynchronous (async) You won't know when it happens It won't happen in the middle of code execution 
-Async events are handled with callbacks 
+That triggering is asynchronous (async). You can follow the rule of promises. Promises can separate the original callback and execute the callback function in a chained manner. You won't know when it happens It won't happen in the middle of code execution. Async events are handled with callbacks.
 
 ## Q: What does it mean to "store your state in the DOM"?  Why shouldn't you do this?
 
 It means store the value for all things in  JS objects that represent the rendered page.  It means when you are not store your state in variables/object and use those to update the screen as needed.
 
-The screen is the visual output if you alter the display, you change how to get the list that way As your display gets more complicated, so does all your state interaction
+The screen is the visual output if you alter the display, you change how to get the list that way. As your display gets more complicated, so does all your state interaction
 
 
 ## Q: What is the primary rule to follow to prevent poor web security such as injection attacks?  (This is NOT about safely storing passwords)
 
-Never craft your SQL from user input Always use "bound" variables when possible If not possible to use bound, use the escaping libraries from your vendor AND whitelist your data
-
+It can follow Same Origin Policy (SOP) and Cross Origin Resource Sharing (CORS).
+Never craft your SQL from user input Always use "bound" variables when possible. If not possible to use bound, use the escaping libraries from your vendor. Whitelist the data that is allowed and block anything else.
 
 ## Q: What is a polyfill?  When should one be used?  Give an example of a polyfill that follows these rules.
 
 Polyfills add newer functionality to older JS.
-write this in JS versions prior to it being standard
-Example:` forEach()` is a method on Arrays takes a callback, calls that callback with each element in turn 
+When a feature is not supported on the web browsers, write this in JS versions prior to it being standard
+
+Below is an example which is needed for the browser which does not have native support for the specific feature startsWith().
+```
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function (searchString, position) {
+    position = position || 0;
+    return this.substr(position, searchString.length) === searchString;
+  };
+}
+```
+
 
 ## Q: Give an example of a piece of information you should not store in a cookie, and why you should not store it that way.
 
@@ -59,7 +68,7 @@ Name:xinrui wang
 Password: password
 Email: wang.xinru@husky.neu.edu
 ```
-Cookie is not safe, so you shouldn't store Sensitive data (CC numbers, passwords), Personal data (addresses, etc), Application state, Big data and Data hard to represent in short bits of text.
+Cookie is not safe, and stored on people's computers, so from the view of a website developer, they're basically out in the wild, and are potentially accessible to anyone. so you shouldn't store Sensitive data (CC numbers, passwords), Personal data (addresses, etc), Application state, Big data and Data hard to represent in short bits of text.
 
 
 ## Q: Explain the differences between a multiple-page-web application and single-page-web application.  Be sure to fully demonstrate your understanding.
@@ -83,5 +92,3 @@ Both REST service and dynamic asset can change the page,
 Dynamic asset change page by page loads. It sends params based on input `name` attributes and sends params as url-encoded string `(something=somevalue)`
 
 REST loads data from url in background doesn't require `<form>` doesn't use `name` attributes. Rest can have error handling.
-
-

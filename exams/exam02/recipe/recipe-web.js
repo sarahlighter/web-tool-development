@@ -98,7 +98,7 @@ const recipeWeb = {
 		<div class="outgoing">
 			<form class="send" action="/newRecipe" method="POST">
 				<span>title:
-					<input class="to-send-title" value="" placeholder="Enter ricipe title"/>
+					<input class="to-send-title" value="" placeholder="Enter recipe title"/>
 				</span>
 				<span>ingredients:
 					<textarea class="to-send-ingredients" value="" placeholder="Enter ingredients"/></textarea>

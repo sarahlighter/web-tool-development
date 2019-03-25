@@ -1,31 +1,62 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #chat-app { 
   border: 1px solid black;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  max-height: 90vh;
+  max-width: 90vh;
+  min-width: 900px;
+  background: linear-gradient(to bottom, DodgerBlue, MintCream);
 }
 
 .display-panel { 
   display: flex;
   flex-direction: row;
+  border-bottom: 1px solid black;
+  justify-content: center;
 }
 
 .users { 
-  border: 1px solid black;
+  border-right: 1px solid black;  
   list-style: none;
   padding: 5px;
   margin: 0;
+  min-width: 160px;
+  overflow-y: scroll;
+  color: white;
+  text-shadow: 1px 2px 0 DimGrey;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+.users span:hover {
+    background-color: #555;
+    color: white;
 }
 
 .messages { 
+  border: 1px solid black;
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.messages li {
+  margin: 10px;
+}
+
+.messages li:last-child { 
+  border-bottom: 0px;
 }
 
 .message { 
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
 }
 
 .message:hover { 
@@ -33,20 +64,83 @@
 }
 
 .meta-info { 
-  min-width: 100px;
+  width: 300px;
   background-color: lightgrey;
   padding: 5px;
+  margin-right: 20px;
 }
 
 .message-text { 
-  padding-left: 10px;
+  width: 100%;
+  position: relative;
+  background: #dddddd;
+  line-height: 30px;
+  box-shadow: 1px 2px 3px DimGrey;
+  border-radius: 4px;
+  content: 10px;
 }
 
+.message-text:before{
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 4px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent;
+  border-right-width: 16px;
+  border-right-color: currentColor;
+  color: #dddddd;
+}
 .sender-info { 
+
 }
 
 .message-info { 
 }
 
 .outgoing { 
+  padding: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  width: 100%;
+  margin-left: 60px;
+}
+
+.logout { 
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.outgoing .send { 
+  flex: 1 1 auto;
+  margin-left: 50px;
+}
+
+.to-send { 
+  width: 80%;
+}
+
+.users{
+  margin-left: 20px;
+}
+
+button{
+  border: none;
+  font-size: 15px;
+  padding: 2px 5px;
+  cursor: pointer;
+  background: Gray;
+  color: white;    
+  transition: .2s;
+  margin: 10px 0;
+  text-shadow: 1px 2px 0 MediumBlue;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
 }

@@ -34,6 +34,7 @@ const chatWeb = {
         ${this.getMessageList(chat)}
       </div>
       ${this.getOutgoing(username)}
+      ${this.errorMessages()}
     `);
   },
   logout: function(username) {
@@ -98,6 +99,14 @@ const chatWeb = {
           <input type="hidden" name="username" value="${username}"/>
           <button type="submit">Refresh</button>
         </form>
+      </div>
+    `;
+  },
+
+  errorMessages: function(){
+    return `
+      <div class="show-errors">
+        <p></p>
       </div>
     `;
   }

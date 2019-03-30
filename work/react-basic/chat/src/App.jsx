@@ -43,7 +43,7 @@ class App extends Component {
                   <MessageList messages={chat.messages}/>
                 </div>
                 <div className="send-panel">
-                    <Outgoing value={this.state.value} handleSubmit={this.handleSubmit} handleChange={this.handleChange} keyPress={this.keyPress}/>
+                    <Outgoing handleSubmit={this.handleSubmit} handleChange={this.handleChange} keyPress={this.keyPress}/>
                 </div>
             </div>
         );

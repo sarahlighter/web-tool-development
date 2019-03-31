@@ -23,8 +23,6 @@ class App extends Component {
             const text = this.state.value;
             chat.addMessage({sender,timestamp,text});
             this.setState({value:''});
-            const sendbox = document.querySelector(".to-send");
-            sendbox.value='';
         }
     }
     
@@ -44,7 +42,7 @@ class App extends Component {
                   <MessageList messages={chat.messages}/>
                 </div>
                 <div className="send-panel">
-                    <Outgoing handleSubmit={this.handleSubmit} handleChange={this.handleChange} keyPress={this.keyPress}/>
+                    <Outgoing value={this.state.value} handleSubmit={this.handleSubmit} handleChange={this.handleChange}  keyPress={this.keyPress}/>
                 </div>
             </div>
         );

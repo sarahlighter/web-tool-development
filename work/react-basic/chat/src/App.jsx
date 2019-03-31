@@ -10,7 +10,6 @@ class App extends Component {
         super();
         this.state ={
             value:'',
-            sender:"Me",
         }
         
         this.handleChange = this.handleChange.bind(this);
@@ -19,11 +18,13 @@ class App extends Component {
     
     keyPress(e){
         if(e.key === 'Enter' && this.state.value){
-            const sender = this.state.sender;
+            const sender = chat.sender;
             const timestamp = new Date();
             const text = this.state.value;
             chat.addMessage({sender,timestamp,text});
             this.setState({value:''});
+            const sendbox = document.querySelector(".to-send");
+            sendbox.value='';
         }
     }
     

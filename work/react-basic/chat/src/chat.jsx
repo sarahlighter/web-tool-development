@@ -20,6 +20,8 @@ const chat = {
     addMessage({sender,timestamp, text}){   
         this.messages.push({ sender, timestamp, text });
     },
+    sender:"Me",
+    
     
 }
 export default chat;

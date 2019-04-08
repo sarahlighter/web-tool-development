@@ -1,31 +1,33 @@
-export const getUsers = () =>{
+export const getUsers = ({callback}) =>{
   return fetch('/users/')
   .catch( err => Promise.reject({ error: 'service-error', err }) )
   .then( response =>{
       if( response.ok ) {
-//        resetErrorStatus();
+          callback({err:"",errorType:"updateUserError"});
         return response.json();
       }else{
-        throw new Error("Couldn't get data!");
-      }
-  });
+        throw new Error("Couldn't User get data!");
+      }  
+  })
+  .catch( err => callback({err,errorType:"updateUserError"}));
 };
 
 
-export const getMessages = () =>{
+export const getMessages = ({callback}) =>{
   return fetch('/messages/')
   .catch( err => Promise.reject({ error: 'service-error', err }) )
   .then( response =>{
       if( response.ok ) {
-//        resetErrorStatus();
+          callback({err:"",errorType:"UpdateMessageError"});
         return response.json();
       }else{
-        throw new Error("Couldn't get data!");
+        throw new Error("Couldn't Message get data!");
       }
-  });
+  })
+  .catch( err => callback({err,errorType:"UpdateMessageError"}));
 };
 
-export const sendMessage = ({username, text}) =>{
+export const sendMessage = ({username, text, callback}) =>{
   return fetch('/messages/', {
     method: 'POST',
     headers: new Headers({      
@@ -36,7 +38,7 @@ export const sendMessage = ({username, text}) =>{
   .catch( err => Promise.reject({ error: 'service-error', err }) )
   .then( response => {
     if( response.ok ){
-        //update messages and users
+        callback({err:"",errorType:"sendMessageError"});
     } else {
         return response.json();
     }
@@ -45,6 +47,6 @@ export const sendMessage = ({username, text}) =>{
       if(errorMessage){
           throw new Error(errorMessage.error);
       }
-  });
-//  .catch( err => showErrorStatus(err));
+  })
+  .catch( err => callback({err,errorType:"sendMessageError"}));
 }

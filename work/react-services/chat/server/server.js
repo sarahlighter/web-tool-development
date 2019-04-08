@@ -4,18 +4,22 @@ const PORT = 4000;
 
 const chat = require('./chat');
 
-app.post('/chat',  (req,res)=>{
-    res.json("get chat");
-});
-
 app.get('/users/', (req, res)=>{
   const users = chat.users;
-  res.json(users);
+  if(users){
+    res.json(users);
+  }else{
+    res.status(204).json({Alert:`No Users`});
+  }
 });
 
 app.get('/messages/', (req, res)=>{
   const messages = chat.messages;
-  res.json(messages);
+  if(messages){
+    res.json(messages);
+  }else{
+    res.status(204).json({Alert:`No messages`});
+  }
 });
 
 app.post('/messages/', express.json(), (req, res) => {
@@ -27,7 +31,7 @@ app.post('/messages/', express.json(), (req, res) => {
   }else {
     chat.addMessage({ sender: username, text, timestamp: new Date() });
     res.sendStatus(200);
-  };
+  }
 });
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`) );

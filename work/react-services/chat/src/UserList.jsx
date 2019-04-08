@@ -4,7 +4,7 @@ const UserList=({users}) =>{
     if(!users) return "";
     const userLine = Object.values(users).map((user)=>
       <li>
-        <div class="user">
+        <div className="user">
           <span className="username">{user}</span>
         </div>
       </li>

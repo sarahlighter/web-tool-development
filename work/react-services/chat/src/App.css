@@ -105,3 +105,6 @@ body{
   margin-left: 20px;
 }
 
+.show-errors-list{
+    list-style: none;
+}

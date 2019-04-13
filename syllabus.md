@@ -54,7 +54,7 @@ Mon Feb 4, NOT ~~Mon Feb 11~~ (instructor conflict), NOT ~~Mon Feb 18~~ (holiday
 At the end of Section 2 you should be able to write a simple single page web application (SPA) calling RESTful, external services, and use NodeJS to provide service endpoints that can make use of a database.
 
 ### Section 3: The Modern Web Industry
-Mon Mar 25, Mon Apr 1, Mon Apr 8, NOT ~~Mon Apr 15~~ (holiday)
+Mon Mar 25, Mon Apr 1, Mon Apr 8, Mon Apr 15
  - Application state management, Redux
  - Progressive Web Apps (PWA)
  - as-a-service (PaaS, FaaS)

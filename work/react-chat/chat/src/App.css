@@ -1,0 +1,110 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#chat-app { 
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, DodgerBlue, MintCream);
+}
+
+.display-panel { 
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  justify-content: center;
+}
+
+.users { 
+  border-right: 1px solid black;  
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  min-width: 160px;
+  overflow-y: scroll;
+  color: white;
+  text-shadow: 1px 2px 0 DimGrey;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+.users span:hover {
+    background-color: #555;
+    color: white;
+}
+
+.messages { 
+  border: 1px solid black;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.messages li {
+  margin: 10px;
+}
+
+.messages li:last-child { 
+  border-bottom: 0px;
+}
+
+.message { 
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.message:hover { 
+  background-color: lightgray;
+}
+
+.meta-info { 
+  width: 300px;
+  background-color: grey;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.message-text { 
+  position: relative;
+  background: grey;
+  line-height: 30px;
+  box-shadow: 1px 2px 3px DimGrey;
+  border-radius: 4px;
+  content: 10px;
+  word-wrap:break-word;
+  width:60%;
+}
+
+.message-text:before{
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 4px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent;
+  border-right-width: 16px;
+  border-right-color: currentColor;
+  color: grey;
+}
+
+.outgoing { 
+  padding: 10px;
+  width: 100%;
+}
+
+.to-send{
+  width: 400px;
+  margin-left: 100px;
+}
+.users{
+  margin-left: 20px;
+}
+
+.show-errors-list{
+    list-style: none;
+}

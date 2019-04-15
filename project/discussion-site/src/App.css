@@ -1,0 +1,144 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chat-app { 
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo img{
+  position: relative;         
+  display: inline-block;       
+  left: 50%;                   
+  transform: translate(-50%); 
+}
+
+.navigation-bar{
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navigation-bar ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  
+} 
+
+.navigation-bar li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navigation-bar li a:hover {
+  background-color: #111;
+}
+
+.login-status-div{
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.greeting{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  color:white;
+}
+
+.display-panel { 
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+  justify-content: center;
+}
+
+.users { 
+  border-right: 1px solid black;  
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  min-width: 160px;
+  overflow-y: scroll;
+  font-family:  Gill Sans Extrabold, sans-serif;
+}
+.users span:hover {
+    background-color: #555;
+    color: white;
+}
+
+.messages { 
+  border: 1px solid black;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.messages li {
+  margin: 10px;
+}
+
+.messages li:last-child { 
+  border-bottom: 0px;
+}
+
+.message { 
+  display: flex;
+  flex-direction: column;
+  border-top:    1px solid grey;
+  margin: 10px;
+ word-wrap : break-word;
+}
+
+.message:hover { 
+  background-color: lightgray;
+}
+
+.meta-info { 
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.meta-info .timestamp{
+  color: darkgrey;
+  margin: 10px;
+  font-size: 80%;
+}
+
+
+.message-text { 
+  position: relative;
+}
+
+
+.outgoing { 
+  padding: 10px;
+  width: 100%;
+}
+
+.to-send{
+  width: 400px;
+  margin-left: 100px;
+}
+.users{
+  margin-left: 20px;
+}
+
+.show-errors-list{
+    list-style: none;
+}

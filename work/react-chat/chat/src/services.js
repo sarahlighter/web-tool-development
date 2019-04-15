@@ -52,12 +52,11 @@ export const sendMessage = ({username, text, callback}) =>{
 };
 
 export const sendUsernameToLogin = ({username,callback}) =>{
-    return fetch('/login/',{
+    return fetch(`/login/${username}`,{
         method: 'POST',
         headers: new Headers({      
         'content-type': 'application/json'    
         }), 
-        body: JSON.stringify({username})
     })
     .catch( error => Promise.reject({err:error, errorType:'service-error'}) )
     .then( response => {
@@ -76,12 +75,11 @@ export const sendUsernameToLogin = ({username,callback}) =>{
 };
 
 export const sendUsernameToLogout = ({username,callback}) =>{
-    return fetch('/logout/',{
+    return fetch(`/logout/${username}`,{
         method:'POST',
         headers: new Headers({
             'content-type': 'application/json'
         }),
-        body: JSON.stringify({username})
     })
     .catch(error=>Promise.reject({err:error, errorType:'service-error'}))
     .then(response =>{

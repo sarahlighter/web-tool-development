@@ -5,8 +5,8 @@ const chat = require('./chat');
 
 app.use(express.static('public'));
 
-app.post('/login/',express.json(),(req,res)=>{
-    const {username} = req.body;
+app.post('/login/:username',express.json(),(req,res)=>{
+    const username = req.params.username;
     if(!username){
         res.status(400).json({error:`empty username`});
     }else{
@@ -15,8 +15,8 @@ app.post('/login/',express.json(),(req,res)=>{
     }
 });
 
-app.post('/logout/', express.json(),(req,res)=>{
-    const {username} = req.body;
+app.post('/logout/:username', express.json(),(req,res)=>{
+    const username = req.params.username;
     if(username){
         chat.removeUser({username});
     }else{

@@ -1,7 +1,7 @@
 # Exam 2
 
 * start from the up-to-date master branch (`git checkout master; git pull origin master`)
-* Create a feature branch named 'exam1' (`git checkout -b exam2`)
+* Create a feature branch named 'exam2' (`git checkout -b exam2`)
 * modify the `questions.md` file to have the answers required
 * Add any files necessary to create the application below
 * add, commit, and push the branch to github

@@ -1,12 +1,23 @@
 import React from 'react';
 import LoginPage from './login';
 import Greeting from './Greeting';
-const NavigationBar = ({updateSender, value, handleSubmit, disabled, isLogged})=>{
+import Logout from './logout';
+
+const NavigationBar = ({updateSender, value, handleSubmit, disabled, isLogged, logout, backToMainPage,gotoNewTopicPage})=>{
     const showLog=()=>{
         if(!isLogged){
-            return (<LoginPage updateSender={updateSender} value={value} handleSubmit={handleSubmit} disabled={disabled}/>);
+            return (
+                <div className='login-status-div'>
+                    <LoginPage updateSender={updateSender} value={value} handleSubmit={handleSubmit} disabled={disabled}/>
+                </div>
+            );
         }else{
-            return (<Greeting username={isLogged}/>);
+            return (
+                <div className='login-status-div'>
+                    <Greeting username={isLogged}/>
+                    <Logout logout={logout}/>
+                </div>
+            );
         }
     };
                     
@@ -16,16 +27,14 @@ const NavigationBar = ({updateSender, value, handleSubmit, disabled, isLogged})=
           <div className="all-links">
 			<ul>
               <li>
-                  <a className="back-to-mainpage" href="/">Main Page</a>
+                  <p className="back-to-mainpage" onClick={()=>backToMainPage()}>Main Page</p>
               </li>
               <li>
-                  <a className="new-topic" href="/">New topic</a>
+                  <p className="new-topic" onClick={()=>gotoNewTopicPage()}>New topic</p>
               </li>
             </ul>
           </div>
-            <div className="login-status-div">
-                {showLog()}
-            </div>
+            {showLog()}
         </div>
     );
 };

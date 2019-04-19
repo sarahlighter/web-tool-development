@@ -39,13 +39,17 @@ export const sendMessage = ({title, username, text, callback}) =>{
   .then( response => {
     if( response.ok ){
         callback({err:"",errorType:"sendMessageError"});
-    } else {
+        return response.json();
+    }
+    else {
         return response.json();
     }
   })
-  .then( errorMessage =>{
-      if(errorMessage){
-          throw new Error(errorMessage.error);
+  .then( responseMessage =>{
+      if(responseMessage.error){
+          throw new Error(responseMessage.error);
+      }else{
+          return responseMessage.topicId;
       }
   })
   .catch( err => callback({err,errorType:"sendMessageError"}));
@@ -95,4 +99,67 @@ export const sendUsernameToLogout = ({username,callback}) =>{
         }
     })
     .catch(err => callback({err,errorType:"LogoutError"}));
-}
+};
+
+export const sendTopicChatInfo = ({username,text,topicId,callback})=>{
+    return fetch(`/topicDiscussion/${topicId}`,{
+        method: 'POST',
+        headers: new Headers({      
+            'content-type': 'application/json'    
+        }), 
+        body: JSON.stringify( {username,text} )
+    })
+    .catch(error=>Promise.reject({err:error, errorType:'service-error'}))
+    .then(response =>{
+        if(response.ok){
+            callback({err:"",errorType:"SendDisscussionError"});
+        } else{
+            return response.json();
+        }
+    })
+    .then(errorMessage =>{
+        if(errorMessage){
+            throw new Error(errorMessage.error);
+        }
+    })
+    .catch(err => callback({err,errorType:"SendDisscussionError"}));
+};
+
+
+export const getTopicChatInfo = ({username,text,title,callback})=>{
+    return fetch(`/topicDiscussion/`,{
+        method: 'POST',
+        headers: new Headers({      
+            'content-type': 'application/json'    
+        }), 
+        body: JSON.stringify( {title,text} )
+    })
+    .catch(error=>Promise.reject({err:error, errorType:'service-error'}))
+    .then(response =>{
+        if(response.ok){
+            callback({err:"",errorType:"SendDisscussionError"});
+        } else{
+            return response.json();
+        }
+    })
+    .then(errorMessage =>{
+        if(errorMessage){
+            throw new Error(errorMessage.error);
+        }
+    })
+    .catch(err => callback({err,errorType:"SendDisscussionError"}));
+};
+
+export const getTopicChatInfoByTopicId =({topicId,callback})=>{
+    return fetch(`/topicDiscussion/${topicId}`)
+          .catch( error => Promise.reject({err:error, errorType:'service-error'}) )
+          .then( response =>{
+              if( response.ok ) {
+                  callback({err:"",errorType:"UpdateDisscussionError"});
+                return response.json();
+              }else{
+                throw new Error("Couldn't get Disscussion data!");
+              }
+          })
+          .catch( err => callback({err,errorType:"UpdateDisscussionError"}));
+};

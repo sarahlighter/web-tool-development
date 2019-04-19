@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 4000;
-const discussions = require('./discussions');
+const Topics= require('./Topics');
 
 app.use(express.static('public'));
 
@@ -10,7 +10,7 @@ app.post('/login/:username',express.json(),(req,res)=>{
     if(!username){
         res.status(400).json({error:`empty username`});
     }else{
-        discussions.addUser({username});
+        Topics.addUser({username});
         res.sendStatus(200);
     }
 });
@@ -18,7 +18,7 @@ app.post('/login/:username',express.json(),(req,res)=>{
 app.post('/logout/:username', express.json(),(req,res)=>{
     const username = req.params.username;
     if(username){
-        discussions.removeUser({username});
+        Topics.removeUser({username});
     }else{
         res.status(204).json({Alert:`Not find login username information`});
     }
@@ -26,7 +26,7 @@ app.post('/logout/:username', express.json(),(req,res)=>{
 });
 
 app.get('/users/', (req, res)=>{
-  const users = discussions.users;
+  const users = Topics.users;
   if(users){
     res.json(users);
   }else{
@@ -35,7 +35,7 @@ app.get('/users/', (req, res)=>{
 });
 
 app.get('/topics/', (req, res)=>{
-  const topics = discussions.topics;
+  const topics = Topics.AllTopics;
   if(topics){
     res.json(topics);
   }else{
@@ -46,13 +46,43 @@ app.get('/topics/', (req, res)=>{
 app.post('/topics/', express.json(), (req, res) => {
   const {title, text, username } = req.body;
   if(!text){
-    res.status(400).json({ error: `'topics' property is required`});
+    res.status(400).json({ error: `'Topics' property is required`});
   }else if(!username) {
-    res.status(400).json({ error: `Unable to identify the sender`});
+    res.status(400).json({ error: `Please login before add a new topic`});
+  }else if(!title){
+    res.status(400).json({ error: `Title is requested for add a new topic`});
   }else {
-    discussions.addTopic({title:title, sender: username, text, timestamp: new Date() });
+    const topicId=Topics.addTopic({title:title, sender: username, text, timestamp: new Date() });
+    res.status(200).json({topicId:topicId});
+  }
+});
+
+app.post('/topicDiscussion/:topicId', express.json(), (req, res) => {
+  const topicId = req.params.topicId;
+  const {username,text} = req.body;
+  if(!text){
+    res.status(400).json({ error: `You haven't send any messages to this topic`});
+  }else if(!username) {
+    res.status(400).json({ error: `Please login before reply`});
+  }else if(!topicId){
+    res.status(400).json({ error: `Unable to identify the topic`});   
+  }else{
+    const topicChat = Topics.getTopicChatByTopicId({topicId}).topicChat;
+    topicChat.addDisscussion({sender:username, timestamp: new Date(), text });
     res.sendStatus(200);
   }
 });
+
+app.get('/topicDiscussion/:topicId',(req,res)=>{
+    const topicId = req.params.topicId;
+    const topicChat = Topics.getTopicChatByTopicId({topicId});
+    if(topicChat){
+        res.json(topicChat);
+    }else{
+        res.status(204).json({Alert:`This topic hasn't been disscussed`});
+    }
+});
+
+
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`) );

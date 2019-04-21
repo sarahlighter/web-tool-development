@@ -15,8 +15,6 @@ import Logo from './Logo';
 import TopicDiscussionPage from './topicsDiscussionPage/TopicDiscussionPage';
 import Outgoing from './topicsPage/NewTopic';
 import ProcessSpinner from './ProcessSpinner';
-//@todo:
-//3. set time out and show progress spinners
 
 class App extends Component {
    constructor(){

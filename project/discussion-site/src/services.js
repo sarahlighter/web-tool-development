@@ -13,7 +13,7 @@ export const getUsers = ({callback}) =>{
 };
 
 
-export const getMessages = ({callback}) =>{
+export const getTopics = ({callback}) =>{
   return fetch('/topics/')
   .catch( error => Promise.reject({err:error, errorType:'service-error'}) )
   .then( response =>{

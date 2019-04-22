@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Outgoing=({title,handleTitleChange,topicInfo,handleSubmit,handleChange,keyPress,disabled})=>{
+const NewTopic=({title,handleTitleChange,topicInfo,handleSubmit,handleChange,keyPress,disabled})=>{
     return(
     <div className="send-panel">    
       <div className="outgoing">
@@ -18,4 +18,4 @@ const Outgoing=({title,handleTitleChange,topicInfo,handleSubmit,handleChange,key
     );
 };
 
-export default Outgoing;
+export default NewTopic;

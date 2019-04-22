@@ -270,3 +270,19 @@ button:hover {
     background: #415F51;
 }
 
+.topic-details{
+    background: #DFEEDF;
+}
+
+.topic-title{
+    margin-left: 10px;
+}
+.topic-Info{
+    margin: 20px;
+    background-color: #CFE4CF;
+}
+
+
+.sender-info{
+    font-weight: bold;
+}

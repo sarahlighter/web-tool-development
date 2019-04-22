@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {getUsers,
-        getMessages,
+        getTopics,
         sendMessage,
         sendUsernameToLogin, 
         sendUsernameToLogout,
@@ -13,7 +13,7 @@ import ErrorReporter from './ErrorReporter';
 import NavigationBar from './NavigationBar';
 import Logo from './Logo';
 import TopicDiscussionPage from './topicsDiscussionPage/TopicDiscussionPage';
-import Outgoing from './topicsPage/NewTopic';
+import NewTopic from './topicsPage/NewTopic';
 import ProcessSpinner from './ProcessSpinner';
 
 class App extends Component {
@@ -38,14 +38,15 @@ class App extends Component {
     
         this.currentPage = this.currentPage.bind(this);
         this.logout = this.logout.bind(this);
-        this.backToTopicsPage = this.backToTopicsPage.bind(this);
         this.gotoNewTopicPage =this.gotoNewTopicPage.bind(this);
     }
     
     backToMainPage(){
         this.showloading();
-        setTimeout(()=>this.setState({topic:'',currentPage:'main'}),500);
-        
+        this.updateTopicsState();
+        setTimeout(()=>{
+            this.setState({topic:'',currentPage:'main'});
+        },500);
     }
     
     updateSender(senderName){
@@ -103,18 +104,18 @@ class App extends Component {
         });
     }
     
-    updateMessagesState(){
+    updateTopicsState(){
         const callback=({err,errorType})=>{this.setStateError({err,errorType})};
-        getMessages({callback})
-        .then( (messages)=>{
+        getTopics({callback})
+        .then( (Topics)=>{
             this.setState({
-               allMessages: messages,
+               allTopics: Topics,
             });
         });
     }
-    getAllUsersAndMessages(){
+    getAllUsersAndTopics(){
         this.updateUsersState();
-        this.updateMessagesState();
+        this.updateTopicsState();
     }
     
     logout(){
@@ -126,12 +127,12 @@ class App extends Component {
     }
     
     componentDidMount(){
-        this.getAllUsersAndMessages();
+        this.getAllUsersAndTopics();
         setInterval(() => {
             if(this.state.topic){
                 this.updateTopicDiscussion({key:this.state.topic.key})
             }else{
-                this.getAllUsersAndMessages();
+                this.getAllUsersAndTopics();
             }
         },5000);
     }
@@ -150,7 +151,7 @@ class App extends Component {
         const text = this.state.topicChatInfo; 
         const callback=({err,errorType})=>{this.setStateError({err,errorType})};  
         sendTopicChatInfo({username,text,topicId,callback});
-        this.updateTopicDiscussion({key:topicId});//set time out
+        this.updateTopicDiscussion({key:topicId});
         this.setState({topicChatInfo:''});
     }
     
@@ -181,10 +182,6 @@ class App extends Component {
     }
     
     
-    backToTopicsPage(){
-        this.setState({topic:'',currentPage:'main'});    
-    }
-    
     currentPage(){
         if(this.state.currentPage==='topicDiscussion'){
            return( 
@@ -197,19 +194,18 @@ class App extends Component {
                 />
             );
         }else if(this.state.currentPage==='newTopic'){
-            return (<Outgoing title={this.state.title} 
+            return (<NewTopic title={this.state.title} 
                         handleTitleChange={this.handleTitleChange} 
                         topicInfo={this.state.topicInfo} 
                         handleSubmit={this.handleSubmit} 
                         handleChange={this.handleChange}  
-                        disabled={!this.state.topicInfo}
+                        disabled={(!this.state.title||!this.state.topicInfo)}
                      />);
         }else if(this.state.currentPage==='main'){
             return (
                 <TopicsPage allUsers={this.state.allUsers} 
-                    allTopics={this.state.allMessages} 
+                    allTopics={this.state.allTopics} 
                     joinNewTopicDiscussion={this.joinNewTopicDiscussion}
-                    
                     
                     topicChatInfo={this.state.topicChatInfo} 
                     handleTopicChatSubmit={this.handleTopicChatSubmit}  

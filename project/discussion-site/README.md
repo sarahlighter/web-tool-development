@@ -1,3 +1,11 @@
+### npm run server 
+This will execute `npm run build` and copy what inside the build folder into server/public, and run `node server.js` 
+
+### npm run server-cross-platform
+It will run `npm run build` and then run command.js to test the current os, if it's Windows systems, it will execute a `.bat` file, else it will execute `.sh` file.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

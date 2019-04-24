@@ -12,8 +12,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "npm run build && node bin/command.js && node server/server.js",
-    "command": "node bin/command.js"
+    "server-cross-platform": "npm run build && node bin/command.js",
+    "command": "node bin/command.js",
+    "server": "npm run build && mkdir -p server/public && cp -r build/* server/public && cd server && node server.js"
   },
   "proxy":"http://localhost:4000/",
   "eslintConfig": {

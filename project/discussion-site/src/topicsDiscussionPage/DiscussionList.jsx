@@ -5,7 +5,7 @@ const DiscussionList = ({messages}) =>{
     let keyId=0;
     const messageLine = messages.map((message)=>
         <li key={keyId++}>
-          <div className="message">
+          <div className="discussion">
             <div className="meta-info">
               <div className="sender-info">
                 <span className="username">{message.sender}</span>

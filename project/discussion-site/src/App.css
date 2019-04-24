@@ -134,16 +134,12 @@ body{
   border-bottom: 0px;
 }
 
-.message { 
+.discussion { 
   display: flex;
   flex-direction: column;
   border-top:  1px solid grey;
   margin: 10px;
   word-wrap : break-word;
-}
-
-.message:hover { 
-  background-color: lightgray;
 }
 
 .meta-info { 
@@ -271,18 +267,20 @@ button:hover {
 }
 
 .topic-details{
-    background: #DFEEDF;
+    border:  1px solid grey;
+    background: #CFE4CF;
+
 }
 
 .topic-title{
-    margin-left: 10px;
+    padding: 0px 20px;
 }
 .topic-Info{
-    margin: 20px;
-    background-color: #CFE4CF;
+    padding: 20px;
 }
 
-
-.sender-info{
+.topic-Info .sender-info{
     font-weight: bold;
+}
+.topic-meta-info{
 }

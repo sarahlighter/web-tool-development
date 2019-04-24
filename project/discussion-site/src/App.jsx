@@ -45,7 +45,7 @@ class App extends Component {
         this.showloading();
         this.updateTopicsState();
         setTimeout(()=>{
-            this.setState({topic:'',currentPage:'main'});
+            this.setState({topic:'',currentPage:'main',error:''});
         },500);
     }
     
@@ -53,6 +53,7 @@ class App extends Component {
         if(!senderName) return;
         this.setState({tempsender:senderName});
     }
+    
     getStateError(){
         return this.state.error;
     }
@@ -87,10 +88,11 @@ class App extends Component {
             const callback=({err,errorType})=>{this.setStateError({err,errorType})};
             sendMessage({title,username,text,callback})
             .then((topicId)=>{
-                this.joinNewTopicDiscussion({key:topicId});
+                if(topicId){
+                    this.joinNewTopicDiscussion({key:topicId});
+                    this.setState({topicInfo:'',title:''});
+                }
             });
-            this.setState({topicInfo:'',title:''});
-            
         }
     }
     
@@ -150,9 +152,16 @@ class App extends Component {
         const username = this.state.sender;
         const text = this.state.topicChatInfo; 
         const callback=({err,errorType})=>{this.setStateError({err,errorType})};  
-        sendTopicChatInfo({username,text,topicId,callback});
-        this.updateTopicDiscussion({key:topicId});
-        this.setState({topicChatInfo:''});
+        sendTopicChatInfo({username,text,topicId,callback})
+        .then((isloading)=>{
+            if(isloading){
+                this.updateTopicDiscussion({key:topicId});
+                this.showloading();
+                setTimeout(()=>{
+                    this.setState({currentPage:'topicDiscussion',topicChatInfo:'', error:''});
+                },500);     
+            }
+        });
     }
     
     handleTopicChatChange(e){
@@ -160,7 +169,7 @@ class App extends Component {
     }
     
     showloading(){
-         this.setState({currentPage:'loading'});
+         this.setState({error:'',currentPage:'loading'});
     }
     
     joinNewTopicDiscussion({key}){
@@ -206,7 +215,6 @@ class App extends Component {
                 <TopicsPage allUsers={this.state.allUsers} 
                     allTopics={this.state.allTopics} 
                     joinNewTopicDiscussion={this.joinNewTopicDiscussion}
-                    
                     topicChatInfo={this.state.topicChatInfo} 
                     handleTopicChatSubmit={this.handleTopicChatSubmit}  
                     handleTopicChatChange={this.handleTopicChatChange} 
@@ -221,7 +229,7 @@ class App extends Component {
     }
     
     gotoNewTopicPage(){
-        this.setState({currentPage:'newTopic', topic:''});
+        this.setState({currentPage:'newTopic', topic:'', error:''});
     }
     
     render(){ 

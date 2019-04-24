@@ -4,6 +4,7 @@ const NewTopic=({title,handleTitleChange,topicInfo,handleSubmit,handleChange,key
     return(
     <div className="send-panel">    
       <div className="outgoing">
+          <p>Reminder: Please fill in both title and topic details. ^v^</p>
         <div className="outgoing-title">
             <label>Title:</label>
             <input className="to-send-title" onChange={(e)=>handleTitleChange(e)} value={title} placeholder="Enter title to send"/>

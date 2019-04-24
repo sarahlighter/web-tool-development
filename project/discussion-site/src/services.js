@@ -113,42 +113,21 @@ export const sendTopicChatInfo = ({username,text,topicId,callback})=>{
     .then(response =>{
         if(response.ok){
             callback({err:"",errorType:"SendDisscussionError"});
+            return JSON.stringify({isloading:true});
         } else{
             return response.json();
         }
     })
-    .then(errorMessage =>{
-        if(errorMessage){
-            throw new Error(errorMessage.error);
-        }
+    .then( responseMessage =>{
+      if(responseMessage.error){
+          throw new Error(responseMessage.error);
+      }else{
+          return responseMessage;
+      }
     })
     .catch(err => callback({err,errorType:"SendDisscussionError"}));
 };
 
-
-export const getTopicChatInfo = ({username,text,title,callback})=>{
-    return fetch(`/topicDiscussion/`,{
-        method: 'POST',
-        headers: new Headers({      
-            'content-type': 'application/json'    
-        }), 
-        body: JSON.stringify( {title,text} )
-    })
-    .catch(error=>Promise.reject({err:error, errorType:'service-error'}))
-    .then(response =>{
-        if(response.ok){
-            callback({err:"",errorType:"SendDisscussionError"});
-        } else{
-            return response.json();
-        }
-    })
-    .then(errorMessage =>{
-        if(errorMessage){
-            throw new Error(errorMessage.error);
-        }
-    })
-    .catch(err => callback({err,errorType:"SendDisscussionError"}));
-};
 
 export const getTopicChatInfoByTopicId =({topicId,callback})=>{
     return fetch(`/topicDiscussion/${topicId}`)

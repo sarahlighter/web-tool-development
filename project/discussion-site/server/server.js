@@ -19,6 +19,7 @@ app.post('/logout/:username', express.json(),(req,res)=>{
     const username = req.params.username;
     if(username){
         Topics.removeUser({username});
+        res.status(200).json({loading:true});
     }else{
         res.status(204).json({Alert:`Not find login username information`});
     }
